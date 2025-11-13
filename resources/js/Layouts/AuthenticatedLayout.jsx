@@ -11,6 +11,24 @@ export default function AuthenticatedLayout({ header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
+    const menu = [
+        {
+            name: "Dashboard",
+            href: route("dashboard"),
+            current: route().current("dashboard"),
+        },
+        {
+            name: "Users",
+            href: route("users"),
+            current: route().current("users"),
+        },
+        {
+            name: "Absensi",
+            href: route("dashboard"),
+            current: route().current("dashboard"),
+        },
+    ];
+
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="border-b border-gray-100 bg-white">
@@ -24,12 +42,17 @@ export default function AuthenticatedLayout({ header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </NavLink>
+                                {menu.map((item, index) => {
+                                    return (
+                                        <NavLink
+                                            key={index}
+                                            href={item.href}
+                                            active={item.current}
+                                        >
+                                            {item.name}
+                                        </NavLink>
+                                    );
+                                })}
                             </div>
                         </div>
 
@@ -128,12 +151,17 @@ export default function AuthenticatedLayout({ header, children }) {
                     }
                 >
                     <div className="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
+                        {menu.map((item, index) => {
+                            return (
+                                <ResponsiveNavLink
+                                    key={index}
+                                    href={item.route}
+                                    active={item.current}
+                                >
+                                    {item.name}
+                                </ResponsiveNavLink>
+                            );
+                        })}
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
