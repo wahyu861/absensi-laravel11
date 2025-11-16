@@ -48,6 +48,9 @@ export default function UserIndex({ users }) {
                                         <th className="px-6 py-3 text-left text-lg font-medium text-black">
                                             Role
                                         </th>
+                                        <th className="px-6 py-3 text-left text-lg font-medium text-black">
+                                            &nbsp;
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +66,25 @@ export default function UserIndex({ users }) {
                                                 {user.email}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nonwrap">
-                                                &nbsp;
+                                                {user.role}
+                                            </td>
+                                            <td className="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 my-4 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gray-900">
+                                                <Link
+                                                    href={route(
+                                                        "users.edit",
+                                                        user.id
+                                                    )}
+                                                >
+                                                    Edit
+                                                </Link>
+                                                {/* <Link
+                                                    href={route(
+                                                        "users.edit",
+                                                        id
+                                                    )}
+                                                >
+                                                    Hapus
+                                                </Link> */}
                                             </td>
                                         </tr>
                                     ))}
