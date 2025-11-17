@@ -7,6 +7,7 @@ import TextInput from "@/Components/TextInput";
 import { Transition } from "@headlessui/react";
 import { Link, useForm } from "@inertiajs/react";
 import Selectbox from "@/Components/SelectBox";
+import Roles from "../../../data/roles.json";
 
 export default function UserEdit({ user }) {
     const { data, setData, patch, errors, processing, recentlySuccessful } =
@@ -108,10 +109,7 @@ export default function UserEdit({ user }) {
                                     }
                                     id="role"
                                     currentValue={data.role}
-                                    options={[
-                                        { value: "admin", label: "Admin" },
-                                        { value: "user", label: "User" },
-                                    ]}
+                                    options={Roles}
                                 />
 
                                 <InputError
